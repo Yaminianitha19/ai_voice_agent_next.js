@@ -197,15 +197,21 @@
     @apply w-full;
 
     .label {
-      @apply !text-light-100 !font-normal;
+      @apply !text-black !font-medium !mb-2.5 block text-[0.95rem];
     }
 
     .input {
-      @apply !bg-dark-200 !rounded-full !min-h-12 !px-5 placeholder:!text-light-100;
+      @apply !bg-white !border !border-black !rounded-xl !min-h-[3.25rem] !px-6 
+      placeholder:!text-gray-500 !text-black !w-full !text-[0.95rem]
+      focus:!border-black focus:!ring-2 focus:!ring-black/20 
+      transition-all duration-200 hover:!border-black;
     }
 
     .btn {
-      @apply !w-full !bg-primary-200 !text-dark-100 hover:!bg-primary-200/80 !rounded-full !min-h-10 !font-bold !px-5 cursor-pointer;
+      @apply !w-full !bg-black !text-white hover:!bg-black/90
+      !rounded-xl !min-h-[3.25rem] !font-bold !px-6 cursor-pointer !text-[1rem]
+      !shadow-lg hover:!shadow-black/25 hover:!scale-[1.02]
+      !transition-all !duration-200 !mt-4;
     }
   }
 
@@ -217,7 +223,7 @@
     }
 
     .card-interviewer {
-      @apply flex-center flex-col gap-2 p-7 h-[400px] blue-gradient-dark rounded-lg border-2 border-primary-200/50 flex-1 sm:basis-1/2 w-full;
+      @apply flex-center flex-col gap-2 p-7 h-[400px] blue-gradient-dark rounded-lg border-2 border-primary-200/50 flex-1 sm:basis-1/2 w-full min-w-[400px] max-w-[600px];
     }
 
     .avatar {
@@ -229,11 +235,11 @@
     }
 
     .card-border {
-      @apply border-gradient p-0.5 rounded-2xl flex-1 sm:basis-1/2 w-full h-[400px] max-md:hidden;
+      @apply border-gradient p-0.5 rounded-2xl flex-1 sm:basis-1/2 w-full min-w-[400px] max-w-[600px] h-[400px] max-md:hidden;
     }
 
     .card-content {
-      @apply flex flex-col gap-2 justify-center items-center p-7 dark-gradient rounded-2xl min-h-full;
+      @apply flex flex-col gap-2 justify-center items-center p-7 dark-gradient rounded-2xl min-h-full w-full;
     }
   }
 
@@ -259,6 +265,47 @@
 
   .auth-layout {
     @apply flex items-center justify-center mx-auto max-w-7xl min-h-screen max-sm:px-4 max-sm:py-8;
+
+    .auth-container {
+      @apply bg-white text-black shadow-xl rounded-2xl p-8 
+      w-full max-w-md border border-gray-100 flex flex-col min-h-[550px];
+
+      .logo-section {
+        @apply flex flex-col items-center gap-3 mb-8;
+
+        img {
+          @apply transition-transform hover:scale-105 duration-300 max-w-[60px];
+        }
+
+        h2 {
+          @apply text-2xl font-bold text-black;
+        }
+
+        h3 {
+          @apply text-base text-black font-normal;
+        }
+      }
+
+      .form-section {
+        @apply space-y-6 flex-grow;
+
+        .form {
+          @apply flex flex-col gap-4;
+        }
+      }
+
+      .footer-text {
+        @apply text-center text-gray-500 mt-auto pt-4 pb-2;
+
+        p {
+          @apply text-gray-500 text-sm;
+        }
+
+        a {
+          @apply text-black hover:text-gray-700 transition-colors ml-1 font-medium text-sm;
+        }
+      }
+    }
   }
 
   .root-layout {

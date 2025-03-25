@@ -47,19 +47,26 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const isSignIn = type === "sign-in";
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="bg-black text-white shadow-lg rounded-xl p-10 w-full max-w-2xl">
-        {/* Logo & Title */}
-        <div className="flex flex-col items-center gap-2">
-          <Image src="/logo.svg" alt="logo" width={48} height={42} />
-          <h2 className="text-2xl font-bold text-primary-100">PrepWise</h2>
-        </div>
+    <div className="auth-container">
+      {/* Logo & Title */}
+      <div className="logo-section">
+        <Image 
+          src="/image.png" 
+          alt="AI Logo" 
+          width={60} 
+          height={60} 
+          className="w-auto h-auto"
+          priority={true}
+          unoptimized
+        />
+        <h2>PrepWise</h2>
+        <h3>Practice With AI</h3>
+      </div>
 
-        <h3 className="text-center text-gray-300 mt-3">Practice With AI</h3>
-
-        {/* Form */}
+      {/* Form */}
+      <div className="form-section">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="form">
             {!isSignIn && (
               <FormField
                 control={form.control}
@@ -68,7 +75,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your name" className="w-full" {...field} />
+                      <Input 
+                        placeholder="Enter your name" 
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -82,7 +92,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your email" className="w-full" {...field} />
+                    <Input 
+                      placeholder="Enter your email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -95,25 +108,29 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Enter your password" className="w-full" {...field} />
+                    <Input 
+                      type="password"
+                      placeholder="Enter your password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-md" type="submit">
+            <Button type="submit" className="btn">
               {isSignIn ? "Sign In" : "Create an Account"}
             </Button>
           </form>
         </Form>
+      </div>
 
-        {/* Link to switch between Sign In & Sign Up */}
-        <p className="text-center mt-4 text-sm text-gray-400">
-          {isSignIn ? "Don't have an account?" : "Already have an account?"}
-          <Link href={!isSignIn ? "/sign-in" : "/sign-up"} className="text-purple-400 font-bold ml-1">
-            {!isSignIn ? "Sign in" : "Sign Up"}
-          </Link>
-        </p>
+      <div className="footer-text">
+        {isSignIn ? (
+          <p>Don't have an account? <Link href="/sign-up" className="hover:underline">Sign Up</Link></p>
+        ) : (
+          <p>Already have an account? <Link href="/sign-in" className="hover:underline">Sign In</Link></p>
+        )}
       </div>
     </div>
   );
